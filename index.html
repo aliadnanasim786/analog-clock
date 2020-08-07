@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        .dail {
+            height: 250px;
+            width: 250px;
+            border: 10px solid rgb(129, 121, 121);
+            background-image: url(clock007.png);
+            background-size: 100% 100%;
+            border-radius: 50%;
+            margin-left: 500px;
+            margin-top: 150px;
+            background-color: rgba(22, 79, 202, 0.877);
+            box-shadow: 0 3px 30px rgba(22, 79, 202, 0.877);
+            position: relative;
+        }
+        /* .dail h2 {
+            position: absolute;
+            color: rgb(230, 61, 89);
+        }
+        
+        .head12 {
+            left: 112px;
+            top: -22px;
+        }
+        
+        .head3 {
+            top: 93px;
+            right: 0px;
+        }
+        
+        .head6 {
+            top: 208px;
+            left: 117px;
+        }
+        
+        .head9 {
+            left: 1px;
+            top: 92px;
+        } */
+        
+        #secarm {
+            width: 7vw;
+            height: 2px;
+            background-color: #c91dc0;
+            position: absolute;
+            top: 125px;
+            left: 28px;
+            transform-origin: 100%;
+            transform: rotate(0deg);
+            /* transition-duration: 30s; */
+        }
+        
+        #hourarm {
+            width: 5vw;
+            height: 2px;
+            background-color: green;
+            position: absolute;
+            top: 125px;
+            left: 55px;
+            transform-origin: 100%;
+            transform: rotate(0deg);
+        }
+        
+        #mintarm {
+            width: 6vw;
+            height: 2px;
+            background-color: red;
+            position: absolute;
+            top: 125px;
+            left: 43px;
+            transform-origin: 100%;
+            transform: rotate(deg);
+        }
+        
+        .dail-center-point {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #000000;
+            position: absolute;
+            left: 119px;
+            top: 120px;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dail">
+        <div class="dail-center-point"></div>
+        <!-- <h2 class="head12">12</h2>
+        <h2 class="head3">3</h2>
+        <h2 class="head6">6</h2>
+        <h2 class="head9">9</h2> -->
+
+
+        <div id="secarm"></div>
+        <div id="hourarm"></div>
+        <div id="mintarm"></div>
+    </div>
+</body>
+<script>
+    function clock() {
+        var date = new Date();
+
+        // Variable For Seconds
+        var sec = date.getSeconds();
+        sec = sec / 60 * 360 + 90;
+        document.getElementById('secarm').style.transform = `rotate(${sec}deg)`
+
+        // Variable For Minutes
+        var mint = date.getMinutes();
+        var mint1 = mint / 60 * 360 + 90
+        document.getElementById('mintarm').style.transform = `rotate(${mint1}deg)`
+
+        // Variable For Hours
+        var hour = date.getHours();
+        hour = hour / 12 * 360 + 90 + (.6 * mint)
+            // hour = hour / 12 * 360 + 90
+        document.getElementById('hourarm').style.transform = `rotate(${hour}deg)`
+    }
+    setInterval(clock, 1000)
+    clock()
+</script>
+
+</html>
